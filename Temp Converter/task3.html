@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temprature Converter</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-image: url("t33.webp") ;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            font-family: sans-serif;
+        
+        }
+        body h1{
+            margin-bottom: 25px;
+            font-size: 40px;
+            color: Black;
+        }
+        
+        .wrapper{
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+
+        }
+        .container{
+            width: 40%;
+        }
+        .ans
+        {
+            width: 82%;
+            margin: 20px auto;
+        }
+        div label{
+            font-size: 20px;
+            font-style: bold;
+        }
+        div input{
+            padding: 6px;
+            margin-top: 6px;
+            border: none;
+            border-bottom: 1px solid gray;
+            outline: none;
+        }
+        #res{
+            width: 100%;
+        }
+        div select{
+            padding: 5px;
+            margin-top: 6px;
+            border:none;
+            border-bottom: 1px solid gray;
+            outline: none;
+        }
+
+        .value{
+            border-bottom: 1px solid gray;
+            padding: 5px 0;
+            margin-top: 15px;
+        }
+        .btn{
+            width: 40%;
+            height: 50px;
+            margin: 10px auto;
+           
+        }
+        .btn button{
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            font-size: 25px;
+            background: white;
+            color: black;
+            font-weight: 500;
+            padding: 8px;
+            cursor: pointer;
+            outline: none;
+            border: none;
+           transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <div class="box">
+        <div class="wrapper">
+            <div class="container">
+                <label for="celsius">Degrees</label>
+                <input type="number" id="degrees" placeholder="Enter Number">
+            </div>
+            <div class="container">
+                <label for="dropdown">Select Unit :</label>
+               <select name="" id="unit">
+                <option value="celsius">Celsius</option>
+                <option value="Fahrenheit">Fahrenheit</option>
+                
+               </select>
+            </div>
+        </div>
+        
+        <div class="ans">
+            <label for="answer"> Converted Temperature: </label><br>
+            <div class="value" id="val"></div>
+        </div>
+        <div class="btn">
+            <button id="button" onclick="convert()">Convert</button>
+        </div>
+        <div class="btn rst">
+            <button id="button" onclick="reset()">Reset</button>
+        </div>
+       
+    </div>
+
+<script>
+    let convert=() =>{
+        let option = document.querySelector("#unit");
+        let display = document.querySelector(".value");
+        var input = document.querySelector("#degrees").value;
+
+
+        if(option.value == "Fahrenheit"){
+           
+            let c=(input-32)*(5/9);
+
+            display.innerHTML = c.toFixed(4) +" °C";
+        }
+        else{
+            let f=input*(9/5)+32;
+
+            display.innerHTML = f.toFixed(4) +" F";
+        }
+    }
+
+    let reset=() =>{
+        let display = document.querySelector(".value");
+        var input = document.querySelector("#degrees").value;
+
+        display.innerHTML='';
+        input.value='0';
+
+
+
+    }
+
+</script>
+</body>
+</html>
